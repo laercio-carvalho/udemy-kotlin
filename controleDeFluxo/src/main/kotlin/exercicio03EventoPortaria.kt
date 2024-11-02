@@ -8,7 +8,7 @@
         d-> Caso todos os critérios sejam satisfeitos, exibir: Welcome :)"
  */
 fun main() {
-
+    autenticacao()
     println("Informe a idade dos participantes do evento:");    val idadeParticipante: String? = readLine()
     println("Informe o Tipo de Convite:");                      val convite: String? = readLine()
     println("Informe o Código do Convite:");                    val codigoConvite: String? = readLine()
@@ -16,9 +16,9 @@ fun main() {
     val idade: String = verificaIdade("$idadeParticipante")
     val categoriaConvite: String = tipoConvite("$convite")
     val verificacao: String = verificaConvite("$codigoConvite")
-    println("$idade")
-    println("$categoriaConvite")
-    println("$verificacao")
+//    println("$idade")
+//    println("$categoriaConvite")
+//    println("$verificacao")
 
     validadorGeral("$idade","$categoriaConvite","$verificacao")
 }
@@ -30,6 +30,7 @@ fun verificaIdade(idade: String): String {
     }
 }
 fun tipoConvite(tipo: String): String {
+    tipo.lowercase()
     return when(tipo){
         in  "comum"     -> "Aceito"
         in  "premium"   -> "Aceito"
@@ -50,4 +51,17 @@ fun validadorGeral(idade: String, tipo: String, codigo: String) {
     }else{
         println("Um ou mais requisitos foram negados, por gentileza verificar erros acima")
     }
+}
+fun autenticacao(){
+    val usuario: String?
+    val senha: String?
+    println("Digite o nome do Usuário:"); usuario = readLine()
+    println("Digite a sua Senha:"); senha = readlnOrNull()
+    if (usuario == "laercio" && senha == "SemTelhaVermelha"){
+        println("Seja bem-vindo: $usuario!")
+    }else{
+        println("Usuário ou Senha Inválido(s)")
+        return
+    }
+
 }
