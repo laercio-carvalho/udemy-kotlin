@@ -8,7 +8,14 @@
         d-> Caso todos os critérios sejam satisfeitos, exibir: Welcome :)"
  */
 fun main() {
-    autenticacao()
+    if (autenticacao().startsWith("Seja bem-vindo",ignoreCase = true)) {
+        mainAutenticado()
+    }else{
+        println("Autenticação falhou: Tente novamente!")
+    }
+
+}
+fun mainAutenticado() {
     println("Informe a idade dos participantes do evento:");    val idadeParticipante: String? = readLine()
     println("Informe o Tipo de Convite:");                      val convite: String? = readLine()
     println("Informe o Código do Convite:");                    val codigoConvite: String? = readLine()
@@ -16,9 +23,6 @@ fun main() {
     val idade: String = verificaIdade("$idadeParticipante")
     val categoriaConvite: String = tipoConvite("$convite")
     val verificacao: String = verificaConvite("$codigoConvite")
-//    println("$idade")
-//    println("$categoriaConvite")
-//    println("$verificacao")
 
     validadorGeral("$idade","$categoriaConvite","$verificacao")
 }
@@ -43,6 +47,7 @@ fun verificaConvite(codigo: String): String {
         "Aceito"
     }else{
         "Negado, Código de Convite inválido."
+
     }
 }
 fun validadorGeral(idade: String, tipo: String, codigo: String) {
@@ -52,16 +57,14 @@ fun validadorGeral(idade: String, tipo: String, codigo: String) {
         println("Um ou mais requisitos foram negados, por gentileza verificar erros acima")
     }
 }
-fun autenticacao(){
+fun autenticacao(): String{
     val usuario: String?
     val senha: String?
-    println("Digite o nome do Usuário:"); usuario = readLine()
+    println("Digite o nome do Usuário:"); usuario = readlnOrNull()
     println("Digite a sua Senha:"); senha = readlnOrNull()
-    if (usuario == "laercio" && senha == "SemTelhaVermelha"){
-        println("Seja bem-vindo: $usuario!")
+    return if (usuario == "laercio" && senha == "SemTelhaVermelha"){
+        "Seja bem-vindo: $usuario!"
     }else{
-        println("Usuário ou Senha Inválido(s)")
-        return
+        "Usuário ou Senha Inválido(s)"
     }
-
 }
