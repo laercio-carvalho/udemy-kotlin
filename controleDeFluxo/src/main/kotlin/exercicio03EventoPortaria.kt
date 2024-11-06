@@ -13,7 +13,6 @@ fun main() {
     }else{
         println("Autenticação falhou: Tente novamente!")
     }
-
 }
 fun mainAutenticado() {
     println("Informe a idade dos participantes do evento:");    val idadeParticipante: String? = readLine()
@@ -47,7 +46,6 @@ fun verificaConvite(codigo: String): String {
         "Aceito"
     }else{
         "Negado, Código de Convite inválido."
-
     }
 }
 fun validadorGeral(idade: String, tipo: String, codigo: String) {
